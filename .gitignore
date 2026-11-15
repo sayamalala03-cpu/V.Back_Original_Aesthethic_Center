@@ -1,0 +1,15 @@
+node_modules
+dist
+.env
+.env.local
+.env.*.local
+.DS_Store
+*.log
+.vscode/*
+!.vscode/extensions.json
+supabase/.branches
+supabase/.temp
+
+# Large originals live outside git. Keep only the exported files in public/images.
+images-src/*
+!images-src/.gitkeep
