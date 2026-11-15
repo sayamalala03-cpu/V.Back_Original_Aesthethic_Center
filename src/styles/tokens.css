@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* V.Back design tokens. Mirrors the approved design-system preview. */
+@theme {
+  --color-ivory: #F8F5EF;
+  --color-champagne: #E8D8BD;
+  --color-gold: #B88A42;        /* fills, lines, graphics only (2.9:1 on ivory, never text) */
+  --color-orange: #D97736;      /* single spark: progress, status dots (never text) */
+  --color-charcoal: #29251F;
+  --color-gold-text: #7F5C1B;   /* derived, text-safe accent (5.6:1 on ivory) */
+  --color-ink-soft: #5A5348;    /* derived, secondary text (7.0:1 on ivory) */
+  --color-night: #1C1915;       /* dark-mode page ground */
+
+  --font-display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 960px;
+  --breakpoint-xl: 1440px;
+
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 28px;
+
+  --shadow-1: 0 1px 2px rgb(58 40 20 / .06), 0 6px 18px -10px rgb(58 40 20 / .18);
+  --shadow-2: 0 2px 4px rgb(58 40 20 / .05), 0 18px 40px -18px rgb(58 40 20 / .28);
+  --shadow-3: 0 4px 8px rgb(58 40 20 / .05), 0 36px 80px -28px rgb(58 40 20 / .38);
+
+  --ease-out-soft: cubic-bezier(.22, .8, .2, 1);
+}
