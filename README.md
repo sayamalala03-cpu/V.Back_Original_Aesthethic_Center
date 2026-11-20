@@ -5,12 +5,13 @@ Stack: React, TypeScript, Vite, Tailwind CSS 4, Motion, Three.js / React Three F
 
 ## Status
 
-This is a scaffold. Nothing here has been installed, built or run yet.
+This is a scaffold with the shared layout in place. `npm install` and `npm run build` ran clean on the owner's computer (Nov 2026). Most pages are still labeled placeholders.
 
 | Area | State |
 | --- | --- |
 | Folder structure | Done, matches the agreed tree |
-| Design tokens (colour, type, breakpoints, radius, shadow) | Done in `src/styles/tokens.css` |
+| Design tokens (colour, type, breakpoints, radius, shadow) | Done in `src/styles/tokens.css`. Shared spacing, glass, button and dark-mode variables are in `src/styles/global.css` |
+| Site layout (skip link, scroll progress, header, mobile menu, footer) | Done in `src/components/layout/`, styles in `src/styles/layout.css`. Every page is wrapped by `Layout` in `src/App.tsx` |
 | Treatment data | Service names only, taken from the clinic's brief |
 | Routes | Declared in `src/App.tsx`. Pages are labeled placeholders |
 | Home hero, 3D bottle, brand story | Approved in the design preview, not yet ported here |
@@ -45,7 +46,8 @@ Run `npm run build` before deploying. It type-checks first.
 
 ## Folder map
 
-- `src/components/` reusable UI by area (navigation, hero, treatments, gallery, doctors, booking, shared)
+- `src/components/` reusable UI by area (layout, hero, treatments, gallery, doctors, booking, shared)
+- `src/data/nav.ts` the header and footer links. Results is left out until authorized photos exist
 - `src/pages/` one folder per route
 - `src/admin/` staff dashboard (Dashboard, Appointments, Calendar, Doctors, Staff, Settings)
 - `src/data/` site copy and treatment list. Edit here instead of inside components

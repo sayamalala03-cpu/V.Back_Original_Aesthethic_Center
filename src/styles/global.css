@@ -1,13 +1,66 @@
 @import "./tokens.css";
 
 :root {
+  /* Brand colours as plain variables, so any stylesheet can use them. */
+  --ivory: #F8F5EF;
+  --champagne: #E8D8BD;
+  --gold: #B88A42;
+  --orange: #D97736;
+  --charcoal: #29251F;
+
+  /* Fonts. Also declared in tokens.css, repeated here so they always exist
+     even if Tailwind leaves out theme values that no utility class uses. */
+  --font-display: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Theme (light) */
   --bg: #F8F5EF;
   --surface: #F1EADC;
   --ink: #29251F;
   --ink-soft: #5A5348;
   --accent: #7F5C1B;
   --line: rgb(41 37 31 / .16);
+  --btn-bg: #29251F;
+  --btn-fg: #F8F5EF;
+  --glass: rgb(248 245 239 / .72);
+  --shadow-rgb: 58 40 20;
   color-scheme: light;
+
+  /* Spacing scale, 4px base */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 72px;
+  --s-9: 112px;
+  --s-10: 176px;
+
+  /* Radius */
+  --r-sm: 6px;
+  --r-md: 14px;
+  --r-lg: 28px;
+  --r-arch: 999px 999px 0 0;
+  --r-pill: 999px;
+
+  /* Shadows use the page's own warm brown, not grey */
+  --sh-1: 0 1px 2px rgb(var(--shadow-rgb) / .06), 0 6px 18px -10px rgb(var(--shadow-rgb) / .18);
+  --sh-2: 0 2px 4px rgb(var(--shadow-rgb) / .05), 0 18px 40px -18px rgb(var(--shadow-rgb) / .28);
+  --sh-3: 0 4px 8px rgb(var(--shadow-rgb) / .05), 0 36px 80px -28px rgb(var(--shadow-rgb) / .38);
+
+  --ease: cubic-bezier(.22, .8, .2, 1);
+
+  /* Layout */
+  --gut: clamp(16px, 4.5vw, 64px);
+  --gap: clamp(16px, 2.4vw, 32px);
+  --nav-h: 68px;
+  --sec: clamp(88px, 12vw, 176px);
+}
+
+@media (max-width: 767px) {
+  :root { --nav-h: 60px; }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,6 +71,10 @@
     --ink-soft: #C9BFAE;
     --accent: #D9B26A;
     --line: rgb(248 245 239 / .16);
+    --btn-bg: #F8F5EF;
+    --btn-fg: #1C1915;
+    --glass: rgb(28 25 21 / .66);
+    --shadow-rgb: 0 0 0;
     color-scheme: dark;
   }
 }
@@ -29,10 +86,19 @@
   --ink-soft: #C9BFAE;
   --accent: #D9B26A;
   --line: rgb(248 245 239 / .16);
+  --btn-bg: #F8F5EF;
+  --btn-fg: #1C1915;
+  --glass: rgb(28 25 21 / .66);
+  --shadow-rgb: 0 0 0;
   color-scheme: dark;
 }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 8px);
+  -webkit-text-size-adjust: 100%;
+}
+html.menu-open { overflow: hidden; }
 body {
   margin: 0;
   background: var(--bg);
