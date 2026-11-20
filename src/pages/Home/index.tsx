@@ -1,7 +1,20 @@
-import { site } from '../../data/site'
-import { PlaceholderPage } from '../../components/shared/PlaceholderPage'
+import { Hero } from '../../components/home/Hero'
+import { Story } from '../../components/home/Story'
+import { Specialties } from '../../components/home/Specialties'
+import { Approach } from '../../components/home/Approach'
+import { Standards } from '../../components/home/Standards'
+import { Booking } from '../../components/home/Booking'
+import '../../styles/home.css'
 
-// The approved hero, 3D bottle and story sections are ported here in the next step.
 export default function Home() {
-  return <PlaceholderPage title={site.hero.headline} phase="Hero port, next step" />
+  return (
+    <main id="top">
+      <Hero />
+      <Story />
+      <Specialties />
+      <Approach />
+      <Standards />
+      <Booking />
+    </main>
+  )
 }
