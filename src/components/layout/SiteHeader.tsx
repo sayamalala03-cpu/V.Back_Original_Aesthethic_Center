@@ -95,6 +95,11 @@ export function SiteHeader() {
     return () => document.documentElement.classList.remove('menu-open')
   }, [open])
 
+  // The Treatments accordion always starts collapsed when the mobile menu opens.
+  useEffect(() => {
+    if (open) setSub(false)
+  }, [open])
+
   useEffect(() => () => window.clearTimeout(closeTimer.current), [])
 
   // Mobile menu keyboard: Esc closes, Tab cycles between the burger and the menu controls.

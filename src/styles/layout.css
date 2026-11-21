@@ -155,7 +155,9 @@ html.menu-open .site-nav {
 .logo-mark i { color: var(--accent); font-style: normal; }
 .logo-sub { font: 600 9px/1 var(--font-body); letter-spacing: .26em; text-transform: uppercase; color: var(--ink-soft); }
 
-.site-links { display: none; align-items: center; gap: clamp(18px, 1.9vw, 34px); }
+/* align-self: stretch makes the hover area span the full header height, so there is no dead strip
+   between the Treatments link and the panel that hangs from the header edge. */
+.site-links { display: none; align-items: center; align-self: stretch; gap: clamp(18px, 1.9vw, 34px); }
 :is(.site-links > a, .mega-wrap > a):not(.btn) {
   position: relative;
   font: 500 14px/1 var(--font-body);
@@ -184,7 +186,7 @@ html.menu-open .site-nav {
 .site-links .btn { margin-left: var(--s-2); }
 
 /* Treatments: link + chevron share one underline row. The panel hangs from the header. */
-.mega-wrap { display: flex; align-items: center; gap: 2px; }
+.mega-wrap { display: flex; align-items: center; align-self: stretch; gap: 2px; }
 .mega-toggle {
   display: inline-grid;
   place-items: center;
