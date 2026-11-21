@@ -4,6 +4,7 @@ import { ScrollProgress } from './ScrollProgress'
 import { SiteFooter } from './SiteFooter'
 import { SiteHeader } from './SiteHeader'
 import '../../styles/layout.css'
+import '../../styles/motion.css'
 
 /** Start every new page at the top. */
 function ScrollToTop() {
@@ -19,6 +20,7 @@ function ScrollToTop() {
  * Pages keep their own <main>, so #content is a plain wrapper, not a landmark.
  */
 export function Layout() {
+  const { pathname } = useLocation()
   const skip = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     const target = document.getElementById('content')
@@ -35,7 +37,10 @@ export function Layout() {
       <ScrollProgress />
       <SiteHeader />
       <div id="content" className="site-content" tabIndex={-1}>
-        <Outlet />
+        {/* key: each page fades in when you navigate (opacity only, so sticky and fixed parts keep working) */}
+        <div key={pathname} className="page-in">
+          <Outlet />
+        </div>
       </div>
       <SiteFooter />
     </>

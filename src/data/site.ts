@@ -7,10 +7,10 @@ export const site = {
   supporting:
     'Discover a thoughtful approach to aesthetic care through modern treatment options, personalized consultations, and professional guidance.',
   hero: {
-    headline: 'A new perspective on aesthetic care.',
-    copy: 'Where modern aesthetic innovation meets personalized care.',
-    primaryCta: 'Explore our treatments',
-    secondaryCta: 'Inquire now',
+    headline: 'Your Skin. Your Confidence. Your Radiance.',
+    copy: 'Discover a more thoughtful approach to skin health and aesthetic care, guided by expertise, innovation, and personalized attention.',
+    primaryCta: 'Book a consultation',
+    secondaryCta: 'Explore our treatments',
   },
   // Unverified. Do not publish any of these until the clinic supplies them.
   contact: {

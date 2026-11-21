@@ -1,0 +1,4 @@
+/* Page change: a soft fade. Opacity only, so nothing moves and sticky or fixed parts keep working. */
+.page-in { animation: page-in .55s var(--ease) both; }
+@keyframes page-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .page-in { animation: none; } }

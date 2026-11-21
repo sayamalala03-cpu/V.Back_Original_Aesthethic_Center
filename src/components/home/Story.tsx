@@ -1,5 +1,8 @@
 import { Reveal } from '../../animations/Reveal'
 import { Picture } from '../shared/Picture'
+import { ImageReveal } from '../../animations/ImageReveal'
+import { RevealHeading } from '../../animations/RevealHeading'
+import { Parallax } from '../../animations/Parallax'
 import { ScrubText } from './ScrubText'
 import { beliefs, story } from '../../data/home'
 
@@ -15,14 +18,18 @@ export function Story() {
           <Reveal className="hm-head">
             <p className="eyebrow">{story.eyebrow}</p>
             {story.draft && <Draft />}
-            <h2 className="hm-h3" id="hm-story-h">{story.title} <em>{story.titleAccent}</em></h2>
+            <RevealHeading className="hm-h3" id="hm-story-h" parts={[{ text: story.title }, { text: story.titleAccent, em: true }]} />
           </Reveal>
           <ScrubText className="hm-statement" text={story.statement} />
           <Reveal><p className="hm-body">{story.body}</p></Reveal>
         </div>
         <div className="hm-collage" aria-hidden="true">
-          <div className="hm-collage-a"><Picture id="clinic-consultation" sizes="(min-width: 960px) 28vw, 80vw" style={{ height: '100%' }} /></div>
-          <div className="hm-collage-b"><Picture id="clinic-treatment-room" sizes="(min-width: 960px) 20vw, 50vw" /></div>
+          <Parallax travel={-26}>
+            <ImageReveal className="hm-collage-a"><Picture id="clinic-consultation" sizes="(min-width: 960px) 28vw, 80vw" style={{ height: '100%' }} /></ImageReveal>
+          </Parallax>
+          <Parallax className="hm-collage-b-px" travel={34}>
+            <ImageReveal className="hm-collage-b" delay={0.2}><Picture id="clinic-reception" sizes="(min-width: 960px) 20vw, 50vw" /></ImageReveal>
+          </Parallax>
         </div>
       </div>
 
@@ -30,7 +37,7 @@ export function Story() {
         {beliefs.map((b) => (
           <Reveal key={b.title}>
             <article className="hm-belief">
-              <h2 className="hm-h3">{b.title}</h2>
+              <RevealHeading className="hm-h3" parts={[{ text: b.title }]} />
               <div className="hm-belief-txt"><p>{b.text}</p>{b.draft && <Draft>Draft wording</Draft>}</div>
             </article>
           </Reveal>

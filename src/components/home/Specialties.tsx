@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { RevealHeading } from '../../animations/RevealHeading'
 import { Reveal } from '../../animations/Reveal'
 import { categories } from '../../data/treatments'
 import { routes } from '../../lib/routes'
@@ -12,7 +13,7 @@ export function Specialties() {
       <div className="wrap">
         <Reveal className="hm-head">
           <p className="eyebrow">Our specialties</p>
-          <h2 className="hm-h2" id="hm-sp-h">Six areas of <em>aesthetic care.</em></h2>
+          <RevealHeading className="hm-h2" id="hm-sp-h" parts={[{ text: 'Six areas of' }, { text: 'aesthetic care.', em: true }]} />
           <p className="hm-lede">Each treatment is discussed in a consultation first, so you can ask questions before deciding anything.</p>
           <Draft>Service names from the clinic brief · surgical labels to be confirmed by the clinic</Draft>
         </Reveal>
@@ -22,7 +23,7 @@ export function Specialties() {
               <article className="hm-cat">
                 <span className="hm-num">{c.number}</span>
                 <h3>
-                  <Link to={routes.category(c.slug)}>{c.name}</Link>
+                  <Link to={routes.category(c.slug)}>{c.name} <span className="hm-go" aria-hidden="true">→</span></Link>
                   <span className="hm-kind">{kindLabel[c.kind]}</span>
                 </h3>
                 <ul>

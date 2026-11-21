@@ -1,3 +1,4 @@
+import { RevealHeading } from '../../animations/RevealHeading'
 import { Reveal } from '../../animations/Reveal'
 import { approachSteps } from '../../data/home'
 import { Draft } from './Story'
@@ -8,7 +9,7 @@ export function Approach() {
       <div className="wrap hm-ap-grid">
         <Reveal className="hm-head hm-ap-head">
           <p className="eyebrow">Personalized care</p>
-          <h2 className="hm-h2" id="hm-ap-h">An approach that <em>fits one person.</em></h2>
+          <RevealHeading className="hm-h2" id="hm-ap-h" parts={[{ text: 'An approach that' }, { text: 'fits one person.', em: true }]} />
           <p className="hm-lede">Four steps describe how care could be organized. The clinic confirms or replaces each one.</p>
           <Draft>Draft process · confirm with the clinic</Draft>
         </Reveal>

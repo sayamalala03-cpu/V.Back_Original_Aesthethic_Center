@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import { RevealHeading } from '../../animations/RevealHeading'
+import { ImageReveal } from '../../animations/ImageReveal'
 import { Reveal } from '../../animations/Reveal'
 import { Picture } from '../shared/Picture'
 import { standards } from '../../data/home'
@@ -10,13 +12,13 @@ export function Standards() {
     <section className="section" id="standards" aria-labelledby="hm-std-h">
       <div className="wrap hm-std-grid">
         <div className="hm-std-vis" aria-hidden="true">
-          <div className="hm-std-a"><Picture id="clinic-technology" sizes="(min-width: 960px) 40vw, 90vw" /></div>
-          <div className="hm-std-b"><Picture id="clinic-reception" sizes="20vw" style={{ height: '100%' }} /></div>
+          <ImageReveal className="hm-std-a"><Picture id="clinic-technology" sizes="(min-width: 960px) 40vw, 90vw" /></ImageReveal>
+          <ImageReveal className="hm-std-b" delay={0.2}><Picture id="gallery-environment-01" sizes="20vw" style={{ height: '100%' }} /></ImageReveal>
         </div>
         <div className="hm-std-cols">
           <Reveal className="hm-head">
             <p className="eyebrow">Standards &amp; patient experience</p>
-            <h2 className="hm-h2" id="hm-std-h">Trust is <em>shown,</em> never assumed.</h2>
+            <RevealHeading className="hm-h2" id="hm-std-h" parts={[{ text: 'Trust is' }, { text: 'shown,', em: true }, { text: 'never assumed.' }]} />
           </Reveal>
           {standards.map((s) => (
             <Reveal key={s.title}>

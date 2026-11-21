@@ -1,6 +1,7 @@
 import { Component, lazy, Suspense, useCallback, useEffect, useState, type CSSProperties, type ErrorInfo, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { Picture } from '../shared/Picture'
+import { Parallax } from '../../animations/Parallax'
 import { site } from '../../data/site'
 import { routes } from '../../lib/routes'
 
@@ -14,7 +15,7 @@ class Quiet extends Component<{ children: ReactNode }, { failed: boolean }> {
   render() { return this.state.failed ? null : this.props.children }
 }
 
-export function Hero() {
+export function Hero({ intro = false }: { intro?: boolean }) {
   const [wantGl, setWantGl] = useState(false)
   const [glOn, setGlOn] = useState(false)
   const onState = useCallback((ok: boolean) => setGlOn(ok), [])
@@ -31,31 +32,45 @@ export function Hero() {
     return () => window.clearTimeout(t)
   }, [])
 
+  const i = (n: number) => ({ '--i': n }) as CSSProperties
+
   return (
-    <section className="hm-hero" aria-labelledby="hm-h1">
+    <section className="hm-hero" data-intro={intro ? 'true' : 'false'} aria-labelledby="hm-h1">
+      {/* Layer 1: full-screen editorial photograph, drifting slowly as you scroll */}
+      <div className="hm-bg" aria-hidden="true">
+        <Parallax className="hm-bg-px" travel={70} from="top">
+          <div className="hm-bg-in"><Picture id="hero-main" sizes="100vw" style={{ height: '100%' }} /></div>
+        </Parallax>
+      </div>
+      {/* Layer 2: a soft wash so the headline is always easy to read */}
+      <div className="hm-scrim" aria-hidden="true" />
+
       <div className="wrap hm-hero-grid">
         <div className="hm-hero-copy">
-          <p className="eyebrow hm-in" style={{ '--i': 0 } as CSSProperties}>Cosmetic surgery &amp; aesthetic medicine</p>
+          <p className="eyebrow hm-in" style={i(0)}>{site.statement}</p>
           <h1 className="hm-h1" id="hm-h1">
-            <span className="hm-ln"><span className="hm-ln-in" style={{ '--i': 0 } as CSSProperties}>A new perspective</span></span>
-            <span className="hm-ln"><span className="hm-ln-in" style={{ '--i': 1 } as CSSProperties}>on aesthetic</span></span>
-            <span className="hm-ln"><span className="hm-ln-in" style={{ '--i': 2 } as CSSProperties}><em>care.</em></span></span>
+            <span className="hm-ln"><span className="hm-ln-in" style={i(0)}>Your Skin.</span></span>{' '}
+            <span className="hm-ln"><span className="hm-ln-in" style={i(1)}>Your Confidence.</span></span>{' '}
+            <span className="hm-ln"><span className="hm-ln-in" style={i(2)}>Your <em>Radiance.</em></span></span>
           </h1>
-          <p className="hm-lede hm-in" style={{ '--i': 3 } as CSSProperties}>{site.hero.copy}</p>
-          <div className="hm-btns hm-in" style={{ '--i': 4 } as CSSProperties}>
-            <Link className="btn btn-lg" to={routes.consultation}>{site.hero.secondaryCta} <span className="arr" aria-hidden="true">→</span></Link>
-            <Link className="btn btn-ghost btn-lg" to={routes.treatments}>{site.hero.primaryCta}</Link>
+          <p className="hm-lede hm-in" style={i(3)}>{site.hero.copy}</p>
+          <div className="hm-btns hm-in" style={i(4)}>
+            <Link className="btn btn-lg" to={routes.consultation}>{site.hero.primaryCta} <span className="arr" aria-hidden="true">→</span></Link>
+            <Link className="btn btn-ghost btn-lg" to={routes.treatments}>{site.hero.secondaryCta}</Link>
           </div>
         </div>
 
         <div className="hm-hero-visual">
+          {/* Layer 3: frosted arch, the frame for the bottle */}
           <div className="hm-ring" aria-hidden="true" />
-          <div className="hm-arch"><Picture id="hero-main" sizes="(min-width: 960px) 40vw, 88vw" style={{ height: '100%' }} /></div>
-          <div className="hm-slot-sm hm-in" style={{ '--i': 6 } as CSSProperties}>
-            <Picture id="hero-accent" sizes="20vw" style={{ height: '100%' }} />
-          </div>
-          <div className="hm-chip hm-in" style={{ '--i': 7 } as CSSProperties}><i />Skin health · Aesthetic care</div>
-
+          {/* Layer 4: a second photograph and a label, drifting a little faster */}
+          <Parallax className="hm-px-abs" travel={-48} from="top">
+            <div className="hm-slot-sm hm-in" style={i(6)}>
+              <Picture id="clinic-treatment-room" sizes="20vw" style={{ height: '100%' }} />
+            </div>
+            <div className="hm-chip hm-in" style={i(7)}><i />Skin health · Aesthetic care</div>
+          </Parallax>
+          {/* Layer 5: the floating serum bottle (3D when the device allows, flat gold bottle otherwise) */}
           <div className={`hm-stage${glOn ? ' gl' : ''}`} aria-hidden="true">
             <svg className="hm-fallback" viewBox="0 0 200 340" focusable="false">
               <defs>

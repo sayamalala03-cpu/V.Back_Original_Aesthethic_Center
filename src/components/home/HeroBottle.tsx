@@ -118,19 +118,22 @@ export default function HeroBottle({ onState }: Props) {
     const ro = 'ResizeObserver' in window ? new ResizeObserver(() => { size(); if (reduce) draw(0) }) : null
     ro?.observe(stage)
 
-    let mx = 0, my = 0, tx = 0, ty = 0, sp = 0
+    let mx = 0, my = 0, tx = 0, ty = 0, sp = 0, spT = 0
     const onMove = (e: PointerEvent) => {
       tx = (e.clientX / window.innerWidth - 0.5) * 2
       ty = (e.clientY / window.innerHeight - 0.5) * 2
     }
     const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches
     if (fine && !reduce) hero.addEventListener('pointermove', onMove, { passive: true })
-    const onScroll = () => { sp = Math.min(1, Math.max(0, window.scrollY / Math.max(1, hero.offsetHeight))) }
+    const onScroll = () => { spT = Math.min(1, Math.max(0, window.scrollY / Math.max(1, hero.offsetHeight))) }
     if (!reduce) window.addEventListener('scroll', onScroll, { passive: true })
 
     function draw(t: number) {
       mx += (tx - mx) * 0.06
       my += (ty - my) * 0.06
+      sp += (spT - sp) * 0.08 // eased, so the bottle glides instead of snapping to the scroll position
+      camera.position.z = 11 - sp * 0.9 // a slow push-in adds depth
+      key.position.x = -4 + sp * 6 // the key light sweeps across the glass
       holder.rotation.y = 0.55 + Math.sin(t * 0.5) * 0.22 + sp * Math.PI * 1.35 + mx * 0.35
       holder.rotation.x = 0.06 + Math.sin(t * 0.7) * 0.03 - my * 0.12
       holder.rotation.z = -0.14 + Math.sin(t * 0.6) * 0.02
