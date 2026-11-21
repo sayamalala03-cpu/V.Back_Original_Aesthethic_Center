@@ -1,0 +1,99 @@
+/* Shared styles for text-led inner pages: legal pages and Patient Results.
+   Uses the variables from global.css and the pieces in layout.css (.wrap, .eyebrow, .btn, .tlink). */
+
+.pg { padding-top: calc(var(--nav-h) + clamp(48px, 8vw, 112px)); padding-bottom: var(--sec); }
+
+.pg-head { display: grid; gap: var(--s-5); justify-items: start; padding-bottom: var(--s-8); }
+.pg-h1 { margin: 0; font: 300 clamp(44px, 7vw, 96px)/1 var(--font-display); letter-spacing: -.02em; }
+.pg-h1 em { font-style: italic; color: var(--accent); }
+.pg-h2 { margin: 0; font: 300 clamp(30px, 4vw, 52px)/1.05 var(--font-display); letter-spacing: -.01em; }
+.pg-lede { margin: 0; max-width: 56ch; font-size: clamp(18px, 1.7vw, 21px); color: var(--ink-soft); }
+
+.pg-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font: 600 11px/1 var(--font-body);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.pg-tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+
+/* Notice that this is sample content. Dashed, so it reads as a label and not as part of the copy. */
+.pg-sample {
+  display: grid;
+  gap: var(--s-2);
+  margin: var(--s-2) 0 0;
+  padding: var(--s-4) var(--s-5);
+  max-width: 62ch;
+  border: 1px dashed var(--line);
+  border-radius: var(--r-md);
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.pg-n { font: 600 12px/1 var(--font-body); letter-spacing: .2em; color: var(--accent); }
+
+/* ---------- Legal pages ---------- */
+.pg-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-7); }
+.pg-toc ol { display: grid; gap: 2px; margin: var(--s-4) 0 0; padding: 0; list-style: none; border-left: 1px solid var(--line); }
+.pg-toc a {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s-3);
+  padding: 8px 0 8px var(--s-4);
+  margin-left: -1px;
+  border-left: 1px solid transparent;
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color .3s, border-color .3s, padding-left .45s var(--ease);
+}
+.pg-toc a:hover { color: var(--ink); border-left-color: var(--gold); padding-left: var(--s-5); }
+
+.pg-text { max-width: 68ch; }
+.pg-text section { padding-block: var(--s-6); border-top: 1px solid var(--line); }
+.pg-text section:first-child { padding-top: var(--s-6); }
+.pg-text h2 { display: flex; align-items: baseline; gap: var(--s-4); margin: 0 0 var(--s-4); font: 400 clamp(26px, 3vw, 36px)/1.15 var(--font-display); }
+.pg-text p { margin: 0 0 var(--s-4); color: var(--ink-soft); }
+.pg-text p:last-child { margin-bottom: 0; }
+.pg-also { margin-top: var(--s-6) !important; padding-top: var(--s-5); border-top: 1px solid var(--line); font-size: 15px; }
+
+@media (min-width: 960px) {
+  .pg-body { grid-template-columns: minmax(0, 3fr) minmax(0, 8fr); gap: calc(var(--gap) * 2); align-items: start; }
+  .pg-toc { position: sticky; top: calc(var(--nav-h) + 32px); }
+}
+
+/* ---------- Patient Results ---------- */
+.pg-std { display: grid; gap: var(--s-6); padding-bottom: var(--s-8); }
+.pg-std ol { margin: 0; padding: 0; list-style: none; }
+.pg-std li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: var(--s-4); padding-block: var(--s-6); border-top: 1px solid var(--line); }
+.pg-std li:last-child { border-bottom: 1px solid var(--line); }
+.pg-std h3 { margin: 0 0 var(--s-2); font: 400 clamp(26px, 3vw, 36px)/1.15 var(--font-display); }
+.pg-std p { margin: 0; max-width: 52ch; color: var(--ink-soft); }
+@media (min-width: 960px) {
+  .pg-std { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--gap); }
+  .pg-std .pg-h2 { position: sticky; top: calc(var(--nav-h) + 32px); align-self: start; }
+  .pg-std li { grid-template-columns: 72px minmax(0, 1fr); }
+}
+
+.pg-empty { padding-bottom: var(--s-8); }
+.pg-frame {
+  display: grid;
+  gap: var(--s-3);
+  place-content: center;
+  justify-items: center;
+  min-height: clamp(220px, 30vw, 340px);
+  padding: var(--s-6);
+  border: 1px dashed var(--line);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  text-align: center;
+}
+.pg-frame p { margin: 0; max-width: 40ch; color: var(--ink-soft); }
+
+.pg-cta { display: grid; gap: var(--s-5); justify-items: start; }
+.pg-cta .pg-h2 { max-width: 20ch; }
