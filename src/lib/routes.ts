@@ -10,5 +10,8 @@ export const routes = {
   journal: '/journal',
   contact: '/contact',
   consultation: '/consultation',
+  privacy: '/privacy',
+  terms: '/terms',
+  disclaimer: '/disclaimer',
   admin: '/admin',
 } as const
