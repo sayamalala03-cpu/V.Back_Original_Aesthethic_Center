@@ -3,7 +3,7 @@ import { RevealHeading } from '../../animations/RevealHeading'
 import { Reveal } from '../../animations/Reveal'
 import { categories } from '../../data/treatments'
 import { routes } from '../../lib/routes'
-import { Draft } from './Story'
+import { SampleTag } from './Story'
 
 const kindLabel = { surgical: 'Surgical', 'non-surgical': 'Non-surgical', mixed: 'Surgical and non-surgical' } as const
 
@@ -15,7 +15,7 @@ export function Specialties() {
           <p className="eyebrow">Our specialties</p>
           <RevealHeading className="hm-h2" id="hm-sp-h" parts={[{ text: 'Six areas of' }, { text: 'aesthetic care.', em: true }]} />
           <p className="hm-lede">Each treatment is discussed in a consultation first, so you can ask questions before deciding anything.</p>
-          <Draft>Service names from the clinic brief · surgical labels to be confirmed by the clinic</Draft>
+          <SampleTag>Sample content · labels unverified</SampleTag>
         </Reveal>
         <div className="hm-cats">
           {categories.map((c) => (

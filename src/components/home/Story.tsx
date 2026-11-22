@@ -6,7 +6,8 @@ import { Parallax } from '../../animations/Parallax'
 import { ScrubText } from './ScrubText'
 import { beliefs, story } from '../../data/home'
 
-export function Draft({ children = 'Draft copy · confirm with the clinic' }: { children?: string }) {
+/** One small tag per section: the content is sample text for a fictional clinic. */
+export function SampleTag({ children = 'Sample content' }: { children?: string }) {
   return <span className="hm-ph">{children}</span>
 }
 
@@ -17,7 +18,7 @@ export function Story() {
         <div className="hm-story-text">
           <Reveal className="hm-head">
             <p className="eyebrow">{story.eyebrow}</p>
-            {story.draft && <Draft />}
+            <SampleTag />
             <RevealHeading className="hm-h3" id="hm-story-h" parts={[{ text: story.title }, { text: story.titleAccent, em: true }]} />
           </Reveal>
           <ScrubText className="hm-statement" text={story.statement} />
@@ -38,7 +39,7 @@ export function Story() {
           <Reveal key={b.title}>
             <article className="hm-belief">
               <RevealHeading className="hm-h3" parts={[{ text: b.title }]} />
-              <div className="hm-belief-txt"><p>{b.text}</p>{b.draft && <Draft>Draft wording</Draft>}</div>
+              <div className="hm-belief-txt"><p>{b.text}</p></div>
             </article>
           </Reveal>
         ))}

@@ -1,7 +1,7 @@
 import { RevealHeading } from '../../animations/RevealHeading'
 import { Reveal } from '../../animations/Reveal'
 import { approachSteps } from '../../data/home'
-import { Draft } from './Story'
+import { SampleTag } from './Story'
 
 export function Approach() {
   return (
@@ -10,8 +10,8 @@ export function Approach() {
         <Reveal className="hm-head hm-ap-head">
           <p className="eyebrow">Personalized care</p>
           <RevealHeading className="hm-h2" id="hm-ap-h" parts={[{ text: 'An approach that' }, { text: 'fits one person.', em: true }]} />
-          <p className="hm-lede">Four steps describe how care could be organized. The clinic confirms or replaces each one.</p>
-          <Draft>Draft process · confirm with the clinic</Draft>
+          <p className="hm-lede">Four steps show how care could be organized, from the first conversation to aftercare.</p>
+          <SampleTag />
         </Reveal>
         <ol className="hm-steps">
           {approachSteps.map((s, i) => (

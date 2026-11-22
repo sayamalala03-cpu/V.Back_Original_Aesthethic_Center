@@ -9,7 +9,7 @@ export const site = {
   hero: {
     headline: 'Your Skin. Your Confidence. Your Radiance.',
     copy: 'Discover a more thoughtful approach to skin health and aesthetic care, guided by expertise, innovation, and personalized attention.',
-    primaryCta: 'Book a consultation',
+    primaryCta: 'Book a Consultation',
     secondaryCta: 'Explore our treatments',
   },
   /** Shown in the footer on every page. */
