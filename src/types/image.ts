@@ -1,5 +1,6 @@
 export type ImageFolder =
   | 'hero'
+  | 'brand'
   | 'clinic'
   | 'treatments'
   | 'treatments/eye-surgery'

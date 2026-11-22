@@ -30,6 +30,11 @@ export function validateManifest(entries: readonly ImageEntry[] = Object.values(
     if (!e.fallback) errors.push(`${tag} missing fallback file`)
     if (!(e.width > 0 && e.height > 0)) errors.push(`${tag} needs width and height to avoid layout shift`)
 
+    // Generated concept art must always say so, so it is never mistaken for a real photograph.
+    if (e.status === 'original' && !/^AI-generated/i.test(e.alt)) {
+      errors.push(`${tag} a generated image must start its alt text with "AI-generated"`)
+    }
+
     if (e.status === 'licensed' && !e.credit?.license) {
       errors.push(`${tag} licensed image needs credit.license`)
     }
