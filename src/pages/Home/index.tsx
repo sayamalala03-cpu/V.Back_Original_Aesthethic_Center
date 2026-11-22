@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Hero } from '../../components/home/Hero'
 import { Curtain, shouldPlayIntro } from '../../components/home/Curtain'
 import { Story } from '../../components/home/Story'
+import { Films } from '../../components/home/Films'
 import { Specialties } from '../../components/home/Specialties'
 import { Approach } from '../../components/home/Approach'
 import { Standards } from '../../components/home/Standards'
@@ -16,6 +17,7 @@ export default function Home() {
       {intro && <Curtain />}
       <Hero intro={intro} />
       <Story />
+      <Films />
       <Specialties />
       <Approach />
       <Standards />
