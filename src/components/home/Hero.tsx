@@ -55,7 +55,7 @@ export function Hero({ intro = false }: { intro?: boolean }) {
           </h1>
           <p className="hm-lede hm-in" style={i(3)}>{site.hero.copy}</p>
           <div className="hm-btns hm-in" style={i(4)}>
-            <Link className="btn btn-lg" to={routes.consultation}>{site.hero.primaryCta} <span className="arr" aria-hidden="true">→</span></Link>
+            <Link className="btn btn-cta btn-lg" to={routes.consultation}><i className="dot" aria-hidden="true" />{site.hero.primaryCta} <span className="arr" aria-hidden="true">→</span></Link>
             <Link className="btn btn-ghost btn-lg" to={routes.treatments}>{site.hero.secondaryCta}</Link>
           </div>
         </div>
