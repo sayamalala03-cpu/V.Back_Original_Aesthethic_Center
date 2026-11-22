@@ -8,6 +8,7 @@ import Results from './pages/Results'
 import Journal from './pages/Journal'
 import Contact from './pages/Contact'
 import Consultation from './pages/Consultation'
+import { DisclaimerPage, PrivacyPage, TermsPage } from './pages/Legal'
 import { Layout } from './components/layout/Layout'
 import { PlaceholderPage } from './components/shared/PlaceholderPage'
 
@@ -27,6 +28,9 @@ export default function App() {
           <Route path={routes.journal} element={<Journal />} />
           <Route path={routes.contact} element={<Contact />} />
           <Route path={routes.consultation} element={<Consultation />} />
+          <Route path={routes.privacy} element={<PrivacyPage />} />
+          <Route path={routes.terms} element={<TermsPage />} />
+          <Route path={routes.disclaimer} element={<DisclaimerPage />} />
           <Route path="/admin/*" element={<PlaceholderPage title="Admin" phase="Booking system, needs Supabase" />} />
           <Route path="*" element={<PlaceholderPage title="Page not found" phase="404" />} />
         </Route>

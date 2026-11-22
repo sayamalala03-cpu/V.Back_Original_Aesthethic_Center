@@ -12,7 +12,11 @@ export const site = {
     primaryCta: 'Book a consultation',
     secondaryCta: 'Explore our treatments',
   },
+  /** Shown in the footer on every page. */
+  disclaimer:
+    'V.Back Original Aesthetic Center is a fictional clinic created for portfolio demonstration. Every name, line of copy, treatment description and image is sample content. It is not a real medical practice, none of the contact details are real, and nothing on this site is medical advice.',
   // Unverified. Do not publish any of these until the clinic supplies them.
+  // The footer shows a labeled placeholder for each empty value and never invents one.
   contact: {
     address: null as string | null,
     city: null as string | null,

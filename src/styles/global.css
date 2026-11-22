@@ -57,6 +57,9 @@
   --gap: clamp(16px, 2.4vw, 32px);
   --nav-h: 68px;
   --sec: clamp(88px, 12vw, 176px);
+  --wrap-max: 1320px;
+  --wrap-narrow: 880px;
+  --measure: 62ch;
 }
 
 @media (max-width: 767px) {
@@ -107,6 +110,19 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+
+/* Type base. :where() keeps specificity at zero, so any component class still wins.
+   Headlines are the editorial serif; body copy stays in the sans. */
+:where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+}
+:where(p, li) { text-wrap: pretty; }
+:where(a) { text-underline-offset: .2em; }
+
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
 @media (prefers-reduced-motion: reduce) {
