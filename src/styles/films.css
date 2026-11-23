@@ -1,0 +1,17 @@
+/* Films: concept video section */
+.films-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--s-5, 2rem) var(--s-4, 1.5rem); margin-top: var(--s-6, 3rem); align-items: start; }
+.films-item { grid-column: 1 / -1; min-width: 0; }
+.film { position: relative; margin: 0; overflow: hidden; background: var(--charcoal, #1c1a17); width: 100%; }
+.film video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.film-btn { position: absolute; top: .75rem; right: .75rem; padding: .4rem .8rem; font: inherit; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ivory, #faf6ef); background: rgba(28,26,23,.55); border: 1px solid rgba(250,246,239,.4); cursor: pointer; }
+.film-btn:focus-visible { outline: 2px solid var(--gold, #b8963e); outline-offset: 2px; }
+.film figcaption { position: absolute; inset: auto 0 0 0; display: grid; gap: .15rem; padding: 2.5rem 1rem .9rem; color: var(--ivory, #faf6ef); background: linear-gradient(transparent, rgba(28,26,23,.72)); font-size: .85rem; }
+.film figcaption strong { font-weight: 500; letter-spacing: .04em; }
+.films-note { margin-top: var(--s-5, 2rem); max-width: 60ch; font-size: .85rem; opacity: .75; }
+@media (min-width: 900px) {
+  .films-reception { grid-column: 1 / span 8; }
+  .films-serum { grid-column: 9 / span 4; align-self: end; }
+  .films-suite { grid-column: 2 / span 4; }
+  .films-portrait { grid-column: 6 / span 7; margin-top: var(--s-6, 3rem); }
+  .films-theatre { grid-column: 4 / span 4; }
+}
